@@ -19,7 +19,9 @@ public class GameWindow extends JPanel
   */
   //panels
   private JPanel situationPanel;
-  private JPanel buttonPanel;   // declares a panel
+  private JPanel sidePanel;
+  private JPanel backnextPanel;   // declares a panel
+  private JPanel yesnoPanel;
  
    private JLabel buttonLabel; //declares a label
    
@@ -41,7 +43,7 @@ public class GameWindow extends JPanel
   public GameWindow()
   {
     // set this panel to a grid layout and change its color
-    setLayout(new GridLayout(3,1,0,5));
+    
     setBackground(Color.lightGray);
     
   
@@ -50,47 +52,82 @@ public class GameWindow extends JPanel
     // Situation Panel
     //    
     situationPanel = new JPanel();
+   // situationPanel.setLayout(new BoxLayout(situationPanel, BoxLayout.PAGE_AXIS));
     situationPanel.setBackground(Color.lightGray);
-    add(situationPanel);
+    //add(situationPanel);
+    
     situationLabel = new JLabel("");
-    situationLabel.setText("<html><div style=\"textalign: center;\">"+"Achievements"+"</html>");
+    situationLabel.setText("<html><div style=\"textalign: center;\">"+"Situation:"+"</html>");
     situationLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
     situationLabel.setForeground(Color.WHITE);
     situationPanel.add(situationLabel);
     
-     backButton = new JButton("Back"); // quits game
-    backButton.addActionListener(new ButtonListener());
-    situationPanel.add(backButton);
-    
-    nextButton = new JButton("Next"); // quits game
-    nextButton.addActionListener(new ButtonListener());
-    situationPanel.add(nextButton);
+    //yesnoPanel
+    yesnoPanel = new JPanel();
+    yesnoPanel.setBackground(Color.black);
+   // add(yesnoPanel);
     
     yesButton = new JButton("YES"); // quits game
     yesButton.addActionListener(new ButtonListener());
-    situationPanel.add(yesButton);
+    yesnoPanel.add(yesButton);
     
     noButton = new JButton("NO"); // quits game
     noButton.addActionListener(new ButtonListener());
-    situationPanel.add(noButton);
+    yesnoPanel.add(noButton);
+    
+    //backnextPanel
+    backnextPanel = new JPanel();
+    backnextPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+    backnextPanel.setBackground(Color.black);
+   // add(backnextPanel);
+    
+    backButton = new JButton("Back"); // quits game
+    backButton.addActionListener(new ButtonListener());
+    backnextPanel.add(backButton);
+    
+    nextButton = new JButton("Next"); // quits game
+    nextButton.addActionListener(new ButtonListener());
+    backnextPanel.add(nextButton);
+    
+    
    
    
     // 
-    // Button  Panel
+    // sidePanel
     //    
-    buttonPanel = new JPanel();
-    buttonPanel.setBackground(Color.black);
-    add(buttonPanel);
-    buttonLabel = new JLabel("");
-    buttonLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-    buttonLabel.setForeground(Color.WHITE);
-    buttonPanel.add(buttonLabel);
-    
-    // Buttons
-    //quit
+    sidePanel = new JPanel();
+    sidePanel.setBackground(Color.black);
+    //add(sidePanel);
     quitButton = new JButton("QUIT"); // quits game
     quitButton.addActionListener(new ButtonListener());
-    buttonPanel.add(quitButton);
+    sidePanel.add(quitButton);
+    
+    BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+    this.add(Box.createRigidArea(new Dimension(0, 50)));
+    this.setLayout(layout);
+    this.add(situationPanel);
+    this.add(yesnoPanel);
+    this.add(backnextPanel);
+    
+    
+    this.add(Box.createRigidArea(new Dimension(0, 50)));
+    
+    /*
+    //layout for back, next, yes, no buttons
+    BoxLayout bnynlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+    this.add(Box.createRigidArea(new Dimension(0, 50)));
+    this.setLayout(bnynlayout);
+    this.add(yesnoPanel);
+    this.add(backnextPanel);
+    
+    BoxLayout sidelayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+    this.add(Box.createRigidArea(new Dimension(0, 50)));
+    this.setLayout(sidelayout);
+    this.add(sidePanel);
+    */
+    
+  //  this.add(sidePanel);
+    
     
    
   }
