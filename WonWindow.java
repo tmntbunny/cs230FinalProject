@@ -11,10 +11,10 @@ public class WonWindow extends JPanel
   private JLabel achievementLabel; //declares a label
   private JPanel achievementPanel;   // declares a panel
   
-  private JLabel skilLabel; //declares a label
-  private JPanel skillPanel;   // declares a panel
+  private JLabel skillLabel; //declares a label
+  private JPanel skillpointPanel;   // declares a panel
   
-  private JLabel buttonLabel; //declares a label
+ // private JLabel buttonLabel; //declares a label
   private JPanel buttonPanel;   // declares a panel
   
   private JButton replayButton;
@@ -28,7 +28,7 @@ public class WonWindow extends JPanel
   {
     // set this panel to a grid layout and change its color
     setLayout(new GridLayout(3,1,0,5));
-    setBackground(Color.lightGray);
+    setBackground(Color.white);
     
     // initialize 3 panels, set their colors and add them to the main panel
    
@@ -47,29 +47,31 @@ public class WonWindow extends JPanel
     
     add(infoLabel); //adds this new JLabel
     
+    
+    
     // 
     // Achievement  Panel
     //    
     achievementPanel = new JPanel();
-    achievementPanel.setBackground(Color.lightGray);
+    achievementPanel.setBackground(Color.white);
     add(achievementPanel);
-    achievementLabel = new JLabel("");
-    achievementLabel.setText("<html><div style=\"textalign: center;\">"+"Achievements"+"</html>");
+    achievementLabel = new JLabel("Achievements:");
+    //achievementLabel.setText("<html><div style=\"textalign: center;\">"+"Achievements:"+"</html>");
     achievementLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-    achievementLabel.setForeground(Color.WHITE);
+    achievementLabel.setForeground(Color.black);
     achievementPanel.add(achievementLabel);
     
     // 
     // Skills  Panel
     //    
-    skillPanel = new JPanel();
-    skillPanel.setBackground(Color.black);
-    add(skillPanel);
-    skilLabel = new JLabel("");
-    skilLabel.setText("<html><div style=\"textalign: center;\">"+"Skills"+"</html>");
-    skilLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-    skilLabel.setForeground(Color.WHITE);
-    skillPanel.add(skilLabel);
+    skillpointPanel = new JPanel();
+    skillpointPanel.setBackground(Color.white);
+    add(skillpointPanel);
+    skillLabel = new JLabel("Skills Points:");
+    //skilLabel.setText("<html><div style=\"textalign: center;\">"+"Skills"+"</html>");
+    skillLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+    skillLabel.setForeground(Color.black);
+    skillpointPanel.add(skillLabel);
     
     
     // 
@@ -78,10 +80,12 @@ public class WonWindow extends JPanel
     buttonPanel = new JPanel();
     buttonPanel.setBackground(Color.black);
     add(buttonPanel);
+    /*
     buttonLabel = new JLabel("");
     buttonLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
     buttonLabel.setForeground(Color.WHITE);
     buttonPanel.add(buttonLabel);
+    */
     
     // Buttons
     //quit
@@ -111,5 +115,26 @@ public class WonWindow extends JPanel
       
       
     }
+    public static void main(String [] args){
+    
+    JFrame frame = new JFrame ("Wah, wah, waaaahh....");
+    // creates a new frame
+    
+    frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);    // makes a functional exit operation 
+    
+    JPanel pane = new JPanel(new GridBagLayout());
+    pane.setBackground(Color.black);
+    
+    // adding the tabs which have panels to the tabbed panel
+    pane.add (new WonWindow());
+
+    frame.getContentPane().add(pane); // adding the pane to the frame
+    frame.pack(); // unpacking what we need
+    frame.setSize(950,650); //sets the size after unpacking
+    frame.setResizable(false); //frame can no longer can be resized
+    frame.setVisible(true); // make the frame/everything? visible
+    
+    
+  }
 }
   
