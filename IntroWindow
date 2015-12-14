@@ -1,0 +1,143 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.Toolkit;
+import java.net.URL;
+
+public class IntroWindow extends JPanel
+{
+  private JLabel infoLabel; //declares a label
+  private JPanel infoPanel;
+  
+  private JPanel imgPanel; //declares a panel
+  private JLabel imgLabel; 
+
+  private JPanel buttonPanel;   // declares a panel
+  
+  private JButton startButton;
+
+
+  
+  
+// 
+// Constructor
+// 
+  public IntroWindow()
+  {
+    // set this panel to a grid layout and change its color
+   // setLayout(new GridLayout(0,1,0,1));
+    setBackground(Color.black);
+    
+    // initialize 3 panels, set their colors and add them to the main panel
+   
+    // 
+    // Button  Panel
+    //    
+    
+    buttonPanel= new JPanel();
+    buttonPanel.setBackground(Color.black);
+    startButton = new JButton("START");// closes current window and starts a new game from the instructions window
+    buttonPanel.add(startButton);
+    
+
+    
+    // 
+    // First Panel
+    //    
+    infoPanel = new JPanel();
+    infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+    //setLayout(new GridLayout(0,1,0,0));
+    infoPanel.setBackground(Color.black);
+    
+    infoLabel = new JLabel(""); //instantiates new JLabel
+    infoLabel.setText("<html><div style=\"text-align: center;\">"+"Jack Sparrow Saves The World...Or Not"+"</html>");
+
+    infoLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+    infoLabel.setForeground(Color.WHITE);
+    
+    infoPanel.add(infoLabel); //adds this new JLabel
+    Box.Filler cFill = new Box.Filler(new Dimension(0,19), 
+                                       new Dimension(0,19), 
+                                       new Dimension(0,19));
+    infoPanel.add(cFill);
+    imgLabel =  new JLabel(new ImageIcon("intro.jpg"));
+    infoPanel.add(imgLabel);
+    
+
+    //startButton = new JButton("START");
+    infoPanel.add(buttonPanel);
+
+    add(infoPanel);
+    
+    
+   
+    // Image  Panel
+    //    
+    imgPanel = new JPanel();
+    imgPanel.setBackground(Color.white);
+ 
+   
+   // add(imgPanel);
+  
+    
+     
+ 
+  }
+   /* infoPanel = new JPanel(new GridBagLayout());
+    GridBagConstraints c = new GridBagConstraints();
+    c.fill = GridBagConstraints.VERTICAL;
+    //setLayout(new GridLayout(0,1,0,0));
+    infoPanel.setBackground(Color.black);
+    
+    infoLabel = new JLabel(""); //instantiates new JLabel
+    infoLabel.setText("<html><div style=\"text-align: left;\">"+"Jack Sparrow Saves The World...Or Not"+"</html>");
+
+    infoLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+    infoLabel.setForeground(Color.WHITE);
+    c.anchor=(GridBagConstraints.PAGE_START);
+    infoPanel.add(infoLabel,c); //adds this new JLabel
+    imgLabel =  new JLabel(new ImageIcon("intro.jpg"));
+    c.anchor=(GridBagConstraints.CENTER);
+    infoPanel.add(imgLabel,c);
+    
+
+    add(infoPanel);
+    
+    */
+  /*
+     
+    private class ButtonListener implements ActionListener {
+      
+    
+      public void actionPerformed (ActionEvent event) 
+      {
+        //quit button was pressed
+      if (event.getSource() == quitButton) System.exit(0); 
+      }
+      
+      
+    }
+    */
+    public static void main(String [] args){
+    
+    JFrame frame = new JFrame ("Wah, wah, waaaahh....");
+    // creates a new frame
+    
+    frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);    // makes a functional exit operation 
+    
+    JPanel pane = new JPanel(new GridBagLayout());
+    pane.setBackground(Color.black);
+    
+    // adding the tabs which have panels to the tabbed panel
+    pane.add (new IntroWindow());
+
+    frame.getContentPane().add(pane); // adding the pane to the frame
+    frame.pack(); // unpacking what we need
+    frame.setSize(950,650); //sets the size after unpacking
+    frame.setResizable(false); //frame can no longer can be resized
+    frame.setVisible(true); // make the frame/everything? visible
+    
+    
+  }
+}
+  
